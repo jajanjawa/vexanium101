@@ -1,0 +1,18 @@
+{
+  "cwd": "/home/irwan/VexaniumProjects/vexanium101",
+  "type": [
+    "web"
+  ],
+  "name": "Vexanium101",
+  "framework": "vue",
+  "template": "single-view",
+  "cssPreProcessor": false,
+  "bundler": "vite",
+  "theming": {
+    "customColor": false,
+    "color": "#007aff",
+    "darkMode": false,
+    "iconFonts": true
+  },
+  "customBuild": false
+}
