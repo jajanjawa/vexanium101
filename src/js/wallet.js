@@ -3,7 +3,7 @@ import {Api, JsonRpc} from "vexaniumjs";
 import {reactive} from "vue";
 import process from "process";
 
-ScatterJS.plugins( new ScatterEOS() );
+ScatterJS.plugins(new ScatterEOS());
 
 const isDev = process.env.NODE_ENV === 'development';
 const Wallet = {};
@@ -32,17 +32,16 @@ Wallet.login = async function () {
     let connected = await ScatterJS.connect("Vexanium 101", {network});
     if (!connected) throw new Error("belum tersambung dengan wallet");
 
-    const id = await ScatterJS.login();
-    if (!id) throw new Error('no identity');
+    const identity = await ScatterJS.login();
+    if (!identity || !identity.accounts) throw new Error('tidak berhasil membaca akun dalam wallet');
 
     this.vex = ScatterJS.eos(network, Api, {rpc: this.rpc});
-}
-Wallet.getAccount = async function () {
-    const account = ScatterJS.account("eos");
+    let acc = identity.accounts[0];
     this.account.logged = true;
-    this.account.name = account.name;
-    this.account.pubKey = account.publicKey;
-    this.account.authority = account.authority;
+    this.account.name = acc.name;
+    this.account.pubKey = acc.publicKey;
+    this.account.authority = acc.authority;
+
     return this.account;
 }
 /**
@@ -56,7 +55,7 @@ Wallet.getVexjs = function () {
 }
 Wallet.fetchMyBalance = async function (contract, token) {
     let data = await this.rpc.get_currency_balance(contract, this.account.name, token);
-    this.balance[token] = data[0];
+    if (data.length > 0) this.balance[token] = data[0];
 }
 
 export default Wallet;

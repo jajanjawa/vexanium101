@@ -27,8 +27,7 @@ async function doLogin() {
     }
 
     try {
-        await Wallet.login();
-        let account = await Wallet.getAccount();
+        let account = await Wallet.login();
         state.motd = `Halo ${account.name}`;
         f7.toast.show({text: `selamat datang ${account.name}`, closeTimeout: 2500});
     } catch (e) {
