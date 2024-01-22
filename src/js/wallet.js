@@ -1,4 +1,4 @@
-import {ScatterEOS, ScatterJS} from "scatter-ts";
+import {ScatterEOS, ScatterJS} from "@jajanjawa/scatter-ts";
 import {Api, JsonRpc} from "vexaniumjs";
 import {reactive} from "vue";
 import process from "process";
@@ -28,8 +28,11 @@ if (isDev) {
 Wallet.initRpc = function () {
     this.rpc = new JsonRpc(network.fullhost());
 }
-Wallet.login = async function () {
-    let connected = await ScatterJS.connect("Vexanium 101", {network});
+Wallet.login = async function (ipAddress) {
+    let options = {network};
+    if (ipAddress.length > 0) options.socketHost = `${ipAddress}:50005`;
+
+    let connected = await ScatterJS.connect("Vexanium 101", options);
     if (!connected) throw new Error("belum tersambung dengan wallet");
 
     const identity = await ScatterJS.login();

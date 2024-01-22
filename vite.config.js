@@ -36,7 +36,7 @@ export default async () => {
                 output: {
                     manualChunks: {
                         'gui': ['vue', 'framework7', 'framework7-vue', 'dom7'],
-                        'vex': ['vexaniumjs', 'eos-common', 'scatter-ts']
+                        'vex': ['vexaniumjs', 'eos-common', '@jajanjawa/scatter-ts']
                     }
                 }
             },

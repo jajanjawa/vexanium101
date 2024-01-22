@@ -19,13 +19,13 @@
     "last 5 Firefox versions"
   ],
   "dependencies": {
+    "@jajanjawa/scatter-ts": "0.2.1",
     "dom7": "^4.0.6",
     "eos-common": "0.12.0",
     "framework7": "^8.3.0",
     "framework7-icons": "^5.0.5",
     "framework7-vue": "^8.3.0",
     "material-icons": "^1.13.11",
-    "scatter-ts": "0.1.9",
     "skeleton-elements": "^4.0.1",
     "swiper": "^10.2.0",
     "vexaniumjs": "22.1.0",
@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@esbuild-plugins/node-globals-polyfill": "0.2.3",
-    "@vitejs/plugin-vue": "^4.3.4",
+    "@vitejs/plugin-vue": "^5.0.3",
     "@vue/compiler-sfc": "^3.3.4",
     "cpy-cli": "^5.0.0",
     "cross-env": "^7.0.3",
@@ -41,6 +41,6 @@
     "postcss-preset-env": "^9.1.3",
     "stream-browserify": "3.0.0",
     "util": "0.12.5",
-    "vite": "^4.4.9"
+    "vite": "5.0.12"
   }
 }
